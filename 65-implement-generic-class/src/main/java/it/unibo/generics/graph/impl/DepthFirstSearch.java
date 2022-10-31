@@ -23,16 +23,16 @@ public class DepthFirstSearch<N> extends AbstractGraphSearch<N>{
             parent.put(node, null);
             color.put(node, WHITE);
         }
-        visit_DFS(adjList, source);
+        visitDFS(adjList, source);
         return getNodesPathList(this.parent, target);
     }
 
-    private void visit_DFS(Map<N, Set<N>> adjList, N discoveredNode) {
+    private void visitDFS(Map<N, Set<N>> adjList, N discoveredNode) {
         color.put(discoveredNode, GRAY);
         for (N node : adjList.get(discoveredNode)) {
             if (color.get(node) == WHITE) {
                 parent.put(node,discoveredNode);
-                visit_DFS(adjList, node);
+                visitDFS(adjList, node);
             }
         }
         color.put(discoveredNode, BLACK);
